@@ -97,11 +97,16 @@ workflows:
       - build:
           name: api-build
           package_name: api
+          filters:
+            branches:
+              ignore:
+                - master          
       - deploy:
           name: api-deploy
           package_name: api
-          requires:
-            - api-build
+          filters:
+            branches:
+              only: master
 
   app:
     when: << pipeline.parameters.app >>
