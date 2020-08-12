@@ -76,7 +76,7 @@ jobs:
           command: ls && cat build.txt
       - deploy:
           name: Deploy
-          command: echo "Deploying << parameters.package_name >> ..."
+          command: echo "Deploying << parameters.image_name >> ..."
 
 workflows:
   version: 2
@@ -104,6 +104,7 @@ workflows:
       - deploy:
           name: api-deploy
           package_name: api
+          image_name: IMAGE_REPO_NAME
           filters:
             branches:
               only: master
